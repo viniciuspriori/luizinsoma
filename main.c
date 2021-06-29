@@ -236,11 +236,13 @@ if (opcao==1){
     n2 = (n1-1);
     tam2 = criaNumerao(n2, num2);
     tam1 = soma(num1, tam1, num2, tam2);
-    n1--;
-      if(n2==1) {
+      //if(n2==1) {
        printf("soma: ");
        imprimeNum(num1, tam1);
-     }   
+       printf(" [n1]: %d, [n2]: %d ", n1, n2);
+       printf("\n");
+     //}
+     n1--;   
   }
 }  
 }while(opcao!=-1);
