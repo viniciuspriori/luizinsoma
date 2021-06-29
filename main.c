@@ -53,7 +53,7 @@ int soma(int a[], int tamA, int b[], int tamB){
      // printf("a[%d]:%d a[%d]: %d\n", i, b[i], i+1, b[i+1]);
       sobe1 = (a[i]+b[i])/10;
       a[i]=(a[i]+b[i])%10;
-      printf("sobe1: %d\n", sobe1); 
+      //printf("sobe1: %d\n", sobe1); 
       a[i+1]+=sobe1;
       //printf("a[%d]:%d a[%d]: %d\n", i, a[i], i+1, a[i+1]);
      // printf("a[%d]:%d a[%d]: %d\n", i, b[i], i+1, b[i+1]);
@@ -82,34 +82,32 @@ int soma(int a[], int tamA, int b[], int tamB){
         }   
        }
       }
-      else if(tamA<tamB){
-        int temp;
-        int *pB = &b[1];
+      else if(tamA<tamB){   
           for(int i=1; i<=maiorTam; i++){
-             //if(a[i]-b[i]==0){qD++;}
-
-             if(a[i]-b[i]>=0){
-             if(b[i]==0 && i<maiorTam){ 
-               while(*pB==0){
-                  if(b[i+1]>0){
-                   b[i]=10; 
-                   b[i+1]--;
-                }
-                pB++;
-               }
-               //qD--;
-             }               
-               a[i]=a[i]-b[i];
-               qD++;
-             }
-              else{
+            if(b[i]-a[i]==0){
+              if(i==maiorTam)
+              qD--;
+            }  
+             if(b[i]-a[i]>=0){ 
                a[i]=b[i]-a[i];
                qD++;
-               if(i==maiorTam) a[maiorTam]*=-1;
              }
+           else {               
+               sobe1=b[i]+10;
+               b[i+1]--;
+               a[i]=sobe1-a[i];
+               qD++;
+               if(a[i]==0){
+                 qD--;
+               }
+             }
+             if(i==maiorTam){
+               a[qD]*= -1 ;
+             }
+           
           }
         
-      } else {
+      }  else {
           for(int i=1; i<=maiorTam; i++){
             if(a[i]>=b[i]){
             a[i]=(a[i]-b[i]);
@@ -121,19 +119,64 @@ int soma(int a[], int tamA, int b[], int tamB){
           }
       }
 
-
-      // else{
-      //   //for para testar os numeros. 
-      //   for(int i=1; a[i]==b[i]; i++){
-          
-      //   }
-      // }
-
-
-
   }
-  if(a[0]==0&&b[0]==1){
+  if(a[0]==0 && b[0]==1){
+    if(tamA>tamB){
+        for(int i=1; i<=maiorTam; i++){
+        if(a[i]-b[i]==0){
+          if(i==maiorTam)
+          qD--;}
 
+        if(a[i]-b[i]>=0){
+          a[i]=a[i]-b[i];
+          qD++;
+        }
+        else{
+          sobe1=a[i]+10;
+          a[i+1]--;
+          a[i]=sobe1-b[i];
+           qD++;
+           if(a[i]==0){
+             qD--;
+           }
+        }   
+       }
+      }
+      else if(tamA<tamB){
+          for(int i=1; i<=maiorTam; i++){
+             if(b[i]-a[i]==0){
+               if(i==maiorTam)
+               qD--;}
+
+             if(b[i]-a[i]>=0){
+               a[i]=b[i]-a[i];
+               qD++;
+             } else {               
+               sobe1=b[i]+10;
+               b[i+1]--;
+               a[i]=sobe1-a[i];
+               qD++;
+               if(a[i]==0){
+                 qD--;
+               }
+             }
+             if(i==maiorTam){
+               a[qD]*= -1 ;
+             }
+             }
+           
+           }  else {
+          for(int i=1; i<=maiorTam; i++){
+            if(a[i]>=b[i]){
+            a[i]=(a[i]-b[i]);
+            }
+            else {a[i] = (b[i]-a[i]);
+            if(i==maiorTam) a[maiorTam]*=-1;
+            }
+            qD++;
+          }
+      }  
+    
   }
 
   //printf("\nestou imprimindo na funcao: ");
