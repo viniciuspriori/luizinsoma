@@ -232,22 +232,24 @@ do{
 }
 if (opcao==1){
   int d=0;
+  int a = 0;
   printf("digite numero: ");
   scanf("%d", &n1);
   d=n1; 
   tam1 = criaNumerao(n1, num1);
   while(d>0){
+      //if(n2==1) {
+       printf("soma: ");
+       imprimeNum(num1, qDigitos);
+       printf(" [n2: %d ~ d: %d]", n2, d);
+       printf("\n ");
+       printf("qDigitos: %d \n\n", qDigitos);
+    //}
     n2 = d-1;
     tam2 = criaNumerao(n2, num2);
     qDigitos = soma(num1, tam1, num2, tam2);
     d--;
-    //if(n2==1) {
-       printf("soma: ");
-       imprimeNum(num1, qDigitos);
-       printf(" n2: %d ~ d: %d ", n2, d);
-       printf("\n ");
-       printf("qDigitos: %d \n", qDigitos);
-    //}
+
   }
 }  
 }while(opcao!=-1);
