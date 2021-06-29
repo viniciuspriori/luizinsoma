@@ -1,5 +1,5 @@
 #include <stdio.h>
-#define MAX 100
+#define MAX 2021
 
 int criaNumerao(int n, int num[]){
   int tamNum = 0;
@@ -185,14 +185,20 @@ int soma(int a[], int tamA, int b[], int tamB){
   
 }
 
-void somaNaturais(int n){
-    
-}
+// void somaNaturais(int n, int a[], int tamA, int b[], int tamB){
+ 
+//   while(n>0){
+//     n--;
+//     soma(a, tamA, b, tamB);  
+//   };
+
+//   if(n==0) imprimeNum(a, tamA);
+// }
 
 
 int main() {
   
-  int n1, n2, tam1=0, tam2=0;
+  int n1=0, n2=0, tam1=0, tam2=0;
   int num1[MAX], num2[MAX], qDigitos = 0;
   int opcao = 0; 
   
@@ -205,9 +211,9 @@ do{
   scanf("%d", &opcao); 
 
   if(opcao==0){
-  printf("digite numero1: ");
+  printf("digite numero 1: ");
   scanf("%d", &n1);
-  printf("digite numero1: ");
+  printf("digite numero 2: ");
   scanf("%d", &n2);
   
   //printf("\nno1:\n");
@@ -218,18 +224,32 @@ do{
   tam2 = criaNumerao(n2, num2);
   //imprimeNum(num2, tam2);
 
-  printf("\nsoma:\n");
+  printf("\nsoma: ");
   qDigitos = soma(num1, tam1, num2, tam2);
   //printf("\nqDigitos: %d\n", qDigitos);
   imprimeNum(num1, qDigitos);
+  printf("\n");
 }
 if (opcao==1){
+  int d=0;
   printf("digite numero: ");
   scanf("%d", &n1);
-  somaNaturais(n1);
-} else { 
-      if(opcao!=-1) printf("Digite um numero válido.\n"); 
+  d=n1; 
+  tam1 = criaNumerao(n1, num1);
+  while(d>0){
+    n2 = d-1;
+    tam2 = criaNumerao(n2, num2);
+    qDigitos = soma(num1, tam1, num2, tam2);
+    d--;
+    //if(n2==1) {
+       printf("soma: ");
+       imprimeNum(num1, qDigitos);
+       printf(" n2: %d ~ d: %d ", n2, d);
+       printf("\n ");
+       printf("qDigitos: %d \n", qDigitos);
+    //}
   }
+}  
 }while(opcao!=-1);
 
   return 0;
