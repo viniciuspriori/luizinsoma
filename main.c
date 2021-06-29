@@ -185,20 +185,30 @@ int soma(int a[], int tamA, int b[], int tamB){
   
 }
 
+void somaNaturais(int n){
+    
+}
+
 
 int main() {
   
   int n1, n2, tam1=0, tam2=0;
   int num1[MAX], num2[MAX], qDigitos = 0;
-  //int *p1 = num1;
+  int opcao = 0; 
   
   for(int i=0; i<100; i++){
     num1[i]=0;
     num2[i]=0;
   }
+do{
+  printf("Digita -1 p/ sair, 0 (soma) ou 1 (soma naturais): ");
+  scanf("%d", &opcao); 
 
-  printf("digite num:");
-  scanf("%d %d", &n1, &n2);
+  if(opcao==0){
+  printf("digite numero1: ");
+  scanf("%d", &n1);
+  printf("digite numero1: ");
+  scanf("%d", &n2);
   
   //printf("\nno1:\n");
   tam1 = criaNumerao(n1, num1);
@@ -208,11 +218,19 @@ int main() {
   tam2 = criaNumerao(n2, num2);
   //imprimeNum(num2, tam2);
 
-  //printf("\nsoma:\n");
+  printf("\nsoma:\n");
   qDigitos = soma(num1, tam1, num2, tam2);
-  printf("\nqDigitos: %d\n", qDigitos);
+  //printf("\nqDigitos: %d\n", qDigitos);
   imprimeNum(num1, qDigitos);
-
+}
+if (opcao==1){
+  printf("digite numero: ");
+  scanf("%d", &n1);
+  somaNaturais(n1);
+} else { 
+      if(opcao!=-1) printf("Digite um numero válido.\n"); 
+  }
+}while(opcao!=-1);
 
   return 0;
 }
