@@ -40,7 +40,9 @@ int soma(int a[], int tamA, int b[], int tamB){
   int maiorTam = 0;
    if(tamA>tamB) {maiorTam = tamA;}
    else{maiorTam = tamB;} 
+
   if((a[0]==0 && b[0]==0) || (a[0]==1 && b[0]==1)){
+  
   for(int i=1; i<=maiorTam; i++){
 
     if(a[i]+b[i]<10){
@@ -60,19 +62,17 @@ int soma(int a[], int tamA, int b[], int tamB){
          a[i+1]=1;
          qD++;
         }
-     }
-  //}  
+     } 
  }
 }
   if(a[0]==1&&b[0]==0){
-    
+      for(int i=1; i<=maiorTam; i++){
+      }
   }
   if(a[0]==0&&b[0]==1){
 
   }
-  if(a[0]==1&&b[0]==1){
-    
-  }
+
   //printf("\nestou imprimindo na funcao: ");
   //imprimeNum(a, qD);
   return qD; 
