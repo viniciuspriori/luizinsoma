@@ -66,8 +66,71 @@ int soma(int a[], int tamA, int b[], int tamB){
  }
 }
   if(a[0]==1&&b[0]==0){
-      for(int i=1; i<=maiorTam; i++){
+      if(tamA>tamB){
+        for(int i=1; i<=maiorTam; i++){
+        if(a[i]-b[i]==0){qD--;}
+
+        if(a[i]-b[i]>0){
+          a[i]=a[i]-b[i];
+          qD++;
+        }
+        else{
+          sobe1=a[i]+10;
+          a[i+1]--;
+          a[i]=sobe1-b[i];
+          qD++;
+        }   
+       }
       }
+      else if(tamA<tamB){
+        int temp;
+        int *pB = &b[1];
+          for(int i=1; i<=maiorTam; i++){
+             //if(a[i]-b[i]==0){qD++;}
+
+             if(a[i]-b[i]>=0){
+             if(b[i]==0 && i<maiorTam){ 
+               while(*pB==0){
+                  if(b[i+1]>0){
+                   b[i]=10; 
+                   b[i+1]--;
+                }
+                pB++;
+               }
+               //qD--;
+             }               
+               a[i]=a[i]-b[i];
+               qD++;
+             }
+              else{
+               a[i]=b[i]-a[i];
+               qD++;
+               if(i==maiorTam) a[maiorTam]*=-1;
+             }
+          }
+        
+      } else {
+          for(int i=1; i<=maiorTam; i++){
+            if(a[i]>=b[i]){
+            a[i]=(a[i]-b[i]);
+            }
+            else {a[i] = (b[i]-a[i]);
+            if(i==maiorTam) a[maiorTam]*=-1;
+            }
+            qD++;
+          }
+      }
+
+
+      // else{
+      //   //for para testar os numeros. 
+      //   for(int i=1; a[i]==b[i]; i++){
+          
+      //   }
+      // }
+
+
+
   }
   if(a[0]==0&&b[0]==1){
 
